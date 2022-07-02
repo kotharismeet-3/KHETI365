@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form class="container mt-5" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group" enctype="multidata/form-data">
+            {{ form|crispy }}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>    
+{% endblock %}

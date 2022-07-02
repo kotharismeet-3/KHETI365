@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">    
+    <title>Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-expand-lg" role="navigation-demo">
+            <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-translate">
+                <a class="navbar-brand" href="/">kheti365</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a href="/listing" class="nav-link">
+                      Listings
+                    </a>
+                  </li>                  
+                  <li class="nav-item">
+                    <a href="javascript:;" class="btn btn-rose btn-raised btn-fab btn-round" data-toggle="dropdown">
+                      <i class="material-icons">email</i>
+                    </a>
+                  </li>
+                  {% if user is authenticated %}
+                    <a href="/profile" class="profile-photo  nav-link">
+                      <div class="profile-photo-small">
+                        <img src="{{ request.user.profile.img.url }}" 
+                        alt="Circle Image" class="rounded-circle img-fluid"
+                        style="max-height: 29px; max-width: 29px">
+                      </div>
+                    </a>
+                {% else %}
+                    <button class="btn btn-success">Login</button>
+                {% endif %}                  
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-->
+          </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tag }}">{{message}}</div>            
+        {% endfor %}
+    {% endif %}
+    {% block content %} {% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}    
+    {% for listing in listings %}
+        <div class="card" >
+            <img class="card-img-top" style="max-height: 290px;" src="{{ listing.photo_main.url }}"" alt="{{ listing.photo_main }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ listing.title}}</h5>
+                <p class="card-text">{{ listing.description }}</p>                
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

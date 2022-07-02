@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="container mt-5" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h2>Are Your Sure  you want to delete Listing "{{object.title}}"</h2>
+        </fieldset>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'update-listing' object.id %}" class="btn btn-info">Cancel</a>
+    </form>    
+{% endblock %}
